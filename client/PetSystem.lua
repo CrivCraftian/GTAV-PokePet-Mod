@@ -69,7 +69,6 @@ function PetSystem.startFollow()
             local dogCoords = GetEntityCoords(PetSystem.entity)
             local distance = #(playerCoords - dogCoords)
 
-            -- teleport fallback if too far
             if distance > 10.0 then
                 SetEntityCoords(PetSystem.entity, playerCoords.x - 1.0, playerCoords.y - 1.0, playerCoords.z, true, false, false, false)
             end
