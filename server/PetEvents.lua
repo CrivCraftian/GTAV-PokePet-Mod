@@ -24,5 +24,3 @@ function PetEventController.init()
         end
     end)
 end
-
-PetEventController.init()
