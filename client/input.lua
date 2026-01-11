@@ -21,3 +21,11 @@ RegisterCommand("testblip", function()
     SetBlipColour(blip, 2)
     SetBlipAlpha(blip, 128)
 end, false)
+
+RegisterCommand("pet_swap", function()
+    PetSystem.Swap()
+end, false)
+
+RegisterKeyMapping('pet_deploy', 'Deploy Pet', 'keyboard', 'o')
+RegisterKeyMapping('pet_recall', 'Recall Pet', 'keyboard', 'k')
+RegisterKeyMapping('pet_swap', 'Swap Pet', 'keyboard', 'm')
