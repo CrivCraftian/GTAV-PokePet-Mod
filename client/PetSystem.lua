@@ -13,6 +13,15 @@ function PetSystem.Init()
 end
 
 function PetSystem.Deploy()
+    local playerPed = PlayerPedId()
+
+    RequestAnimDict('rcmnigel1c')
+    while not HasAnimDictLoaded('rcmnigel1c') do
+    Citizen.Wait(1)
+    end
+
+    TaskPlayAnim(playerPed, 'rcmnigel1c', 'hailing_whistle_waive_a', 8.0, -8, -1, 120, 0, false, false, false)
+
     if PetSystem.active then return end
     local playerPed = PlayerPedId()
     local coords = GetEntityCoords(playerPed)
