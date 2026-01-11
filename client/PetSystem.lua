@@ -3,7 +3,8 @@ PetSystem = {
     active = false,
     entity = nil,
     model = "a_c_chimp",
-    following = false
+    following = false,
+    currentPet = 0
 }
 
 function PetSystem.Init()
@@ -38,17 +39,17 @@ function PetSystem.Deploy()
     false
 )
 
-PetSystem.entity = pet
-PetSystem.active = true
-PetSystem.startFollow()
+    PetSystem.entity = pet
+    PetSystem.active = true
+    PetSystem.startFollow()
 
-SetEntityAsMissionEntity(PetSystem.entity, true, true)
-SetBlockingOfNonTemporaryEvents(PetSystem.entity, true)
-SetPedCanRagdoll(PetSystem.entity, false)
-SetPedSuffersCriticalHits(PetSystem.entity, false)
+    SetEntityAsMissionEntity(PetSystem.entity, true, true)
+    SetBlockingOfNonTemporaryEvents(PetSystem.entity, true)
+    SetPedCanRagdoll(PetSystem.entity, false)
+    SetPedSuffersCriticalHits(PetSystem.entity, false)
 
 
-SetEntityInvincible(PetSystem.entity, true)
+    SetEntityInvincible(PetSystem.entity, true)
 end
 
 function PetSystem.startFollow()
@@ -98,4 +99,22 @@ function PetSystem.Recall()
 
     PetSystem.active = false
     PetSystem.entity = nil
+end
+
+function PetSystem.Swap()
+    if not PetSystem.active then return end
+    PetSystem.Recall()
+    local i = PetSystem.currentPet
+    PetSystem.currentPet = (i + 1) % 3
+    if i == 0 then
+        PetSystem.model = "a_c_chimp"
+    elseif i == 1 then
+        PetSystem.model = "a_c_coyote"
+    else
+        PetSystem.model = "a_c_mtlion"
+    end
+    --PetSystem.model = PetSystem.petList[i]
+    print(PetSystem.model)
+    print(PetSystem.currentPet)
+    PetSystem.Deploy()
 end
