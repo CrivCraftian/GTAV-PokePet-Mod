@@ -8,7 +8,7 @@ CreateThread(function()
         local coords = GetEntityCoords(PlayerPedId())
         DrawText2D(
             ("X: %.2f  Y: %.2f  Z: %.2f"):format(coords.x, coords.y, coords.z),
-            0.40, 0.20
+            0.01, 0.01
         )
     end
 end)
